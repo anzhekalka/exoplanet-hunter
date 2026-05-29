@@ -52,19 +52,21 @@ if st.button("Analyze"):
     else: 
         st.error("False positive - no exoplanet detected")
     confidence_score = confidence[1] if prediction == 1 else confidence[0]
-    st.metric(label="Model Confidence", value=f"{confidence_score:.1%}")
-    st.progress(confidence_score)
+    with st.spinner("Aligning the telescopes..."):
+        st.metric(label="Model Confidence", value=f"{confidence_score:.1%}")
+        st.progress(confidence_score)
     
 
     
     feature_importance = model.feature_importances_
-    fig = go.Figure(go.Bar(
-        x = features, 
-        y = feature_importance, 
-        marker_color='#3a7bd5'
-    ))
-    fig.update_layout(title="What influenced this prediction?")
-    st.plotly_chart(fig, use_container_width=True)
+    with st.spinner("Scanning distant solar systems..."):
+        fig = go.Figure(go.Bar(
+            x = features, 
+            y = feature_importance, 
+            marker_color='#3a7bd5'
+        ))
+        fig.update_layout(title="What influenced this prediction?")
+        st.plotly_chart(fig, use_container_width=True)
 
     with st.spinner("Consulting the stars..."):
         explanation = explain_prediction(input_data, prediction, confidence)
