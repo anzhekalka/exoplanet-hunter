@@ -1,3 +1,8 @@
+""" app.py - Streamlit web app for the Exoplanet Hunter project.
+Loads the trained Random Forest model, takes stellar measurements as input,
+predicts whether a star hosts an exoplanet, and displays a Mistral AI explanation.
+"""
+
 #imports
 from explainer import explain_prediction
 import streamlit as st
@@ -69,7 +74,7 @@ if st.button("Analyze"):
         st.plotly_chart(fig, use_container_width=True)
 
     with st.spinner("Consulting the stars..."):
-        explanation = explain_prediction(input_data, prediction, confidence)
+        explanation = explain_prediction(input_data, prediction, confidence_score)
         if explanation == None : 
             st.warning("Our starship hit an asteroid—API request failed. Check your connection and try again.")
         else: 

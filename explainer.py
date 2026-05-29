@@ -37,14 +37,3 @@ def explain_prediction(features: dict,  prediction: int ,confidence: float) :
     else:
         print ("API error:", responce.status_code, responce.text)
         return None 
-
-if __name__ == "__main__":
-    test = explain_prediction(
-        features={"koi_period": 10.5, "koi_prad": 2.3,
-                  "koi_teq": 800.0, "koi_insol": 93.0,
-                  "koi_model_snr": 45.0, "koi_steff": 5455.0,
-                  "koi_slogg": 4.467, "koi_srad": 0.927},
-        prediction=1,
-        confidence=0.87
-    )
-    print(test)

@@ -1,3 +1,9 @@
+"""
+data_download.py — downloads the NASA Kepler Objects of Interest dataset
+from the NASA Exoplanet Archive and saves it to data/kepler_exoplanets.csv.
+Run this once before training the model.
+"""
+
 import pandas as pd
 url = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+cumulative&format=csv"
 df = pd.read_csv(url) #goes to the url, downloads the table, stores in df (DataFrame)

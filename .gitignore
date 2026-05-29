@@ -1,5 +1,5 @@
 .env
-model/*.pkl
+# model/*.pkl
 __pycache__/
 .venv/
 data/kepler_exoplanets.csv
