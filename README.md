@@ -4,6 +4,13 @@ This web app uses machine learning to detect exoplanets based on real data from 
 
 ---
 
+## Preview
+
+![Input Form](screenshot1.png)
+![Results](screenshot2.png)
+
+---
+
 ## What it does
 
 - Trains a Random Forest classifier using data from over 7,300 stars collected by NASA’s Kepler mission
