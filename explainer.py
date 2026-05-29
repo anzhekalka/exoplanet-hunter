@@ -30,10 +30,11 @@ def explain_prediction(features: dict,  prediction: int ,confidence: float) :
     - Stellar Surface Gravity: {features.get('koi_slogg')}
     - Stellar Radius: {features.get('koi_srad')} Solar radii
 
-    Explain in 3 bullet points why the model thinks this star has or doesn't have an exoplanet.
-    Use ONLY these readable names in your explanation: Orbital Period, Planetary Radius, Equilibrium 
-    Temperature, Insolation Flux, Signal-to-Noise Ratio, Stellar Temperature, Stellar Surface Gravity, Stellar Radius.
-    Never use koi_ prefixes."""
+    Give exactly 3 bullet points explaining the prediction.
+    STRICT RULES:
+    - NEVER write KOI_, koi_, or any code names
+    - ONLY use the readable names listed above
+    - No extra sections, no sub-bullets, exactly 3 points"""
     
     headers = {
         "Authorization": f"Bearer {api_key}",
