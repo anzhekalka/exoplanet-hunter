@@ -64,7 +64,7 @@ if st.button("Analyze"):
         marker_color='#3a7bd5'
     ))
     fig.update_layout(title="What influenced this prediction?")
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
     with st.spinner("Consulting the stars..."):
         explanation = explain_prediction(input_data, prediction, confidence)
