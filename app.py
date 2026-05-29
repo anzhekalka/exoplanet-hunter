@@ -20,6 +20,18 @@ def load_model():
 
 #webpage
 model, features = load_model()
+
+feature_labels = {
+    "koi_period":    "Orbital Period (days)",
+    "koi_prad":      "Planetary Radius (Earth radii)",
+    "koi_teq":       "Equilibrium Temperature (K)",
+    "koi_insol":     "Insolation Flux (Earth flux)",
+    "koi_model_snr": "Signal-to-Noise Ratio",
+    "koi_steff":     "Stellar Temperature (K)",
+    "koi_slogg":     "Stellar Surface Gravity",
+    "koi_srad":      "Stellar Radius (Solar radii)"
+}
+
 st.set_page_config(page_title="Exoplanet Detection Model", page_icon="🪐")
 st.title("Exoplanet Detector AI")
 st.write("This web app features a supervised AI model designed to detect the potential existence of an exoplanet based on a star's features. Simply input the star's data, and the model will provide a clear prediction along with a certainty score to indicate confidence in the detection. Additionally, a detailed explanation of the model's reasoning is presented, supported by a visual plot that highlights key data points influencing the prediction. Test the model yourself and explore the exciting frontier of exoplanet discovery with cutting-edge AI technology.")
@@ -60,17 +72,21 @@ if st.button("Analyze"):
     with st.spinner("Aligning the telescopes..."):
         st.metric(label="Model Confidence", value=f"{confidence_score:.1%}")
         st.progress(confidence_score)
-    
+
 
     
     feature_importance = model.feature_importances_
     with st.spinner("Scanning distant solar systems..."):
+        readable_labels = [feature_labels[f] for f in features]
         fig = go.Figure(go.Bar(
-            x = features, 
-            y = feature_importance, 
+            x=readable_labels,
+            y=feature_importance,
             marker_color='#3a7bd5'
         ))
-        fig.update_layout(title="What influenced this prediction?")
+        fig.update_layout(
+            title="What influenced this prediction?",
+            xaxis_tickangle=-30
+        )
         st.plotly_chart(fig, use_container_width=True)
 
     with st.spinner("Consulting the stars..."):
